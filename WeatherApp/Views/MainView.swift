@@ -22,18 +22,17 @@ class MainView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
         view.distribution = .fill
-        view.spacing = 10
+        view.spacing = 3
         return view
     }()
     
     lazy var locationButton: UIButton = {
         var view = UIButton()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.backgroundColor = .black
         view.tintColor = .black
+        view.titleLabel?.font = .monospacedSystemFont(ofSize: 40, weight: .bold)
         view.setImage(.init(systemName: "location.circle.fill"), for: .normal)
-        view.layer.cornerRadius = 15
-        view.clipsToBounds = true
+     
         return view
     }()
     
@@ -111,9 +110,35 @@ class MainView: UIView {
     
     private func setupSubViews() {
         self.addSubview(backgroundImage)
-        
+        self.addSubview(textFieldStack)
+        self.addSubview(conditionImage)
+        self.addSubview(labelStack)
+        self.addSubview(cityLabel)
         NSLayoutConstraint.activate([
+            backgroundImage.topAnchor.constraint(equalTo: self.topAnchor),
+            backgroundImage.leftAnchor.constraint(equalTo: self.leftAnchor),
+            backgroundImage.rightAnchor.constraint(equalTo: self.rightAnchor),
+            backgroundImage.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
+            textFieldStack.topAnchor.constraint(equalTo: self.topAnchor,constant: 20),
+            textFieldStack.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 20),
+            textFieldStack.rightAnchor.constraint(equalTo: self.rightAnchor,constant: -20),
+            
+            conditionImage.topAnchor.constraint(equalTo: textFieldStack.bottomAnchor,constant: 10),
+            conditionImage.rightAnchor.constraint(equalTo: self.rightAnchor),
+            
+            labelStack.topAnchor.constraint(equalTo: conditionImage.bottomAnchor,constant: 10),
+            labelStack.rightAnchor.constraint(equalTo: self.rightAnchor),
+            
+            cityLabel.topAnchor.constraint(equalTo: labelStack.bottomAnchor,constant: 10),
+            cityLabel.rightAnchor.constraint(equalTo: self.rightAnchor),
+            
+            locationButton.heightAnchor.constraint(equalToConstant: 40),
+            locationButton.widthAnchor.constraint(equalTo: locationButton.heightAnchor),
+            
+            searchButton.heightAnchor.constraint(equalToConstant: 40),
+            searchButton.widthAnchor.constraint(equalTo: locationButton.heightAnchor)
+        
         ])
         
     }
