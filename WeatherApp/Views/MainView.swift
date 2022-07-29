@@ -9,7 +9,13 @@ import UIKit
 
 class MainView: UIView {
     
-    
+    private lazy var backgroundImage: UIImageView = {
+        var view  = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.contentMode = .scaleAspectFill
+        view.image = Images.backgroundImage.image
+        return view
+    }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
