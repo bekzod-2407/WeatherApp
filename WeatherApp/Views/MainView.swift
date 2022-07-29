@@ -17,6 +17,88 @@ class MainView: UIView {
         return view
     }()
     
+    private lazy var textFieldStack: UIStackView = {
+        var view = UIStackView(arrangedSubviews: [locationButton,searchTextField,searchButton])
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .horizontal
+        view.distribution = .fill
+        view.spacing = 10
+        return view
+    }()
+    
+    lazy var locationButton: UIButton = {
+        var view = UIButton()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .black
+        view.tintColor = .black
+        view.setImage(.init(systemName: "location.circle.fill"), for: .normal)
+        view.layer.cornerRadius = 15
+        view.clipsToBounds = true
+        return view
+    }()
+    
+    lazy var searchTextField: UITextField = {
+        var view = UITextField()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.textAlignment = .left
+        view.placeholder = "Search"
+        view.font =  .monospacedSystemFont(ofSize: 24, weight: .medium)
+        return view
+    }()
+    
+    lazy var searchButton: UIButton = {
+        var view = UIButton()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.backgroundColor = .clear
+        view.tintColor = .black
+        view.setBackgroundImage(.init(systemName: "magnifyingglass"), for: .normal)
+        return view
+    }()
+    
+    lazy var conditionImage: UIImageView = {
+        var view = UIImageView()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.image = .init(systemName: "sun.max")
+        view.contentMode = .scaleAspectFill
+        return view
+    }()
+    
+    private lazy var labelStack: UIStackView = {
+        var view = UIStackView(arrangedSubviews: [temperatureLabel,temperatureLabel2])
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.axis = .horizontal
+        view.distribution = .fill
+        view.spacing = 2
+        return view
+    }()
+    
+    lazy var temperatureLabel: UILabel = {
+        let view = UILabel()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.text = "21°"
+        view.font = .systemFont(ofSize: 85.0, weight: .bold)
+        view.textColor = .label
+        return view
+    }()
+    
+    lazy var temperatureLabel2: UILabel = {
+        let view = UILabel()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.text = "C"
+        view.font = .systemFont(ofSize: 85.0, weight: .bold)
+        view.textColor = .label
+        return view
+    }()
+    
+    lazy var cityLabel: UILabel = {
+        let view = UILabel()
+        view.translatesAutoresizingMaskIntoConstraints = false
+        view.text = "London"
+        view.font = .systemFont(ofSize: 65.0, weight: .light)
+        view.textColor = .label
+        return view
+    }()
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         setupSubViews()
@@ -28,7 +110,11 @@ class MainView: UIView {
     
     
     private func setupSubViews() {
+        self.addSubview(backgroundImage)
         
+        NSLayoutConstraint.activate([
+            
+        ])
         
     }
     
