@@ -1,7 +1,6 @@
 //
 //  MainView.swift
 //  WeatherApp
-//
 //  Created by Bekzod Qahhorov on 29/07/22.
 //
 
@@ -113,8 +112,7 @@ class MainView: UIView {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
-    
+   
     private func setupSubViews() {
         self.addSubview(backgroundImage)
         self.addSubview(textFieldStack)
@@ -144,8 +142,8 @@ class MainView: UIView {
             locationButton.heightAnchor.constraint(equalToConstant: 40),
             locationButton.widthAnchor.constraint(equalTo: locationButton.heightAnchor),
             
-            searchButton.heightAnchor.constraint(equalToConstant: 80),
-            searchButton.widthAnchor.constraint(equalTo: locationButton.heightAnchor),
+            searchButton.heightAnchor.constraint(equalToConstant: 40),
+            searchButton.widthAnchor.constraint(equalToConstant: 40),
         ])
         
     }
