@@ -19,6 +19,8 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        mainView.searchTextField.delegate = self
+        weatherManager.delegate = self
         setupSubViews()
         addTarget()
     }
@@ -32,7 +34,7 @@ class MainViewController: UIViewController {
             mainView.rightAnchor.constraint(equalTo: view.rightAnchor),
             mainView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
-        mainView.searchTextField.delegate = self
+       
     }
     
     private func addTarget() {
@@ -45,8 +47,18 @@ class MainViewController: UIViewController {
     }
     
 }
-extension MainViewController: UITextFieldDelegate {
+
+extension MainViewController: UITextFieldDelegate, WeatherManagerDelegare {
+    func didFailWithError(error: Error) {
+        print(error.localizedDescription)
+    }
     
+    func didUpdateWeather(_ weatherManager: WeatherManager, weather: WeatherModel) {
+        DispatchQueue.main.async {
+            self.mainView.temperatureLabel.text = "\(weather.temperatureString)°"
+            self.mainView.conditionImage.image = .init(systemName: weather.conditionName)
+        }
+    }
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
         return true
@@ -63,7 +75,7 @@ extension MainViewController: UITextFieldDelegate {
     
     func textFieldDidEndEditing(_ textField: UITextField) {
         guard let cityName = textField.text else {return}
-        weatherManager.fetchWeathet(for: cityName)  
+        weatherManager.fetchWeather(for: cityName)  
         textField.text = ""
     }
 

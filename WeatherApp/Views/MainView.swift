@@ -80,7 +80,7 @@ class MainView: UIView {
     lazy var temperatureLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.text = "21°"
+        view.text = "21.2°"
         view.font = .systemFont(ofSize: 85.0, weight: .bold)
         view.textColor = .label
         return view

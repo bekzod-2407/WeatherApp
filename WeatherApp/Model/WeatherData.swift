@@ -17,6 +17,7 @@ struct Main:Decodable {
 }
 
 struct Weather:Decodable {
+    var id: Int
     var description: String
 }
 
