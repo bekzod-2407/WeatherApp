@@ -24,10 +24,10 @@ class ViewController: UIViewController {
     private func setupSubViews() {
         view.addSubview(mainView)
         NSLayoutConstraint.activate([
-            mainView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
-            mainView.leftAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leftAnchor),
-            mainView.rightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.rightAnchor),
-            mainView.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor),
+            mainView.topAnchor.constraint(equalTo: view.topAnchor),
+            mainView.leftAnchor.constraint(equalTo: view.leftAnchor),
+            mainView.rightAnchor.constraint(equalTo: view.rightAnchor),
+            mainView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
         ])
         
     }

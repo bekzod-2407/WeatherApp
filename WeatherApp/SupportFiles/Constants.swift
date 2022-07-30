@@ -20,7 +20,7 @@ enum Colors{
     
     var color: UIColor? {
         switch self {
-        case .weatherColor: return UIColor(named: "weatherColour")
+        case .weatherColor: return UIColor(named: "weatherColor")
         }
     }
 }

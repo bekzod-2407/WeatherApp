@@ -22,26 +22,32 @@ class MainView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.axis = .horizontal
         view.distribution = .fill
-        view.spacing = 3
+        view.spacing = 8
         return view
     }()
     
     lazy var locationButton: UIButton = {
         var view = UIButton()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.tintColor = .black
-        view.titleLabel?.font = .monospacedSystemFont(ofSize: 40, weight: .bold)
-        view.setImage(.init(systemName: "location.circle.fill"), for: .normal)
-     
+        view.tintColor = .label
+        view.setBackgroundImage(.init(systemName: "location.circle.fill"), for: .normal)
+        view.imageView?.contentMode = .scaleAspectFit
+       
         return view
     }()
     
     lazy var searchTextField: UITextField = {
         var view = UITextField()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.textAlignment = .left
+        view.textAlignment = .right
         view.placeholder = "Search"
+        view.autocapitalizationType = .words
+        view.returnKeyType = .go
         view.font =  .monospacedSystemFont(ofSize: 24, weight: .medium)
+        view.backgroundColor = .systemFill
+        view.textColor = .black
+        view.layer.cornerRadius = 5
+        view.clipsToBounds = true
         return view
     }()
     
@@ -49,7 +55,7 @@ class MainView: UIView {
         var view = UIButton()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.backgroundColor = .clear
-        view.tintColor = .black
+        view.tintColor = .label
         view.setBackgroundImage(.init(systemName: "magnifyingglass"), for: .normal)
         return view
     }()
@@ -59,6 +65,7 @@ class MainView: UIView {
         view.translatesAutoresizingMaskIntoConstraints = false
         view.image = .init(systemName: "sun.max")
         view.contentMode = .scaleAspectFill
+        view.tintColor = Colors.weatherColor.color
         return view
     }()
     
@@ -84,7 +91,7 @@ class MainView: UIView {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.text = "C"
-        view.font = .systemFont(ofSize: 85.0, weight: .bold)
+        view.font = .systemFont(ofSize: 85.0, weight: .regular)
         view.textColor = .label
         return view
     }()
@@ -93,7 +100,7 @@ class MainView: UIView {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
         view.text = "London"
-        view.font = .systemFont(ofSize: 65.0, weight: .light)
+        view.font = .systemFont(ofSize: 35.0, weight: .light)
         view.textColor = .label
         return view
     }()
@@ -120,25 +127,25 @@ class MainView: UIView {
             backgroundImage.rightAnchor.constraint(equalTo: self.rightAnchor),
             backgroundImage.bottomAnchor.constraint(equalTo: self.bottomAnchor),
             
-            textFieldStack.topAnchor.constraint(equalTo: self.topAnchor,constant: 20),
-            textFieldStack.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 20),
-            textFieldStack.rightAnchor.constraint(equalTo: self.rightAnchor,constant: -20),
+            textFieldStack.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            textFieldStack.leftAnchor.constraint(equalTo: self.leftAnchor,constant: 30),
+            textFieldStack.rightAnchor.constraint(equalTo: self.rightAnchor,constant: -30),
             
-            conditionImage.topAnchor.constraint(equalTo: textFieldStack.bottomAnchor,constant: 10),
-            conditionImage.rightAnchor.constraint(equalTo: self.rightAnchor),
-            
-            labelStack.topAnchor.constraint(equalTo: conditionImage.bottomAnchor,constant: 10),
-            labelStack.rightAnchor.constraint(equalTo: self.rightAnchor),
+            conditionImage.topAnchor.constraint(equalTo: textFieldStack.bottomAnchor,constant: 20),
+            conditionImage.rightAnchor.constraint(equalTo: self.rightAnchor,constant: -30),
+            conditionImage.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.14),
+            conditionImage.widthAnchor.constraint(equalTo: self.widthAnchor,multiplier: 0.3),
+            labelStack.topAnchor.constraint(equalTo: conditionImage.bottomAnchor,constant: 20),
+            labelStack.rightAnchor.constraint(equalTo: self.rightAnchor,constant: -30),
             
             cityLabel.topAnchor.constraint(equalTo: labelStack.bottomAnchor,constant: 10),
-            cityLabel.rightAnchor.constraint(equalTo: self.rightAnchor),
+            cityLabel.rightAnchor.constraint(equalTo: self.rightAnchor,constant: -30),
             
             locationButton.heightAnchor.constraint(equalToConstant: 40),
             locationButton.widthAnchor.constraint(equalTo: locationButton.heightAnchor),
             
-            searchButton.heightAnchor.constraint(equalToConstant: 40),
-            searchButton.widthAnchor.constraint(equalTo: locationButton.heightAnchor)
-        
+            searchButton.heightAnchor.constraint(equalToConstant: 80),
+            searchButton.widthAnchor.constraint(equalTo: locationButton.heightAnchor),
         ])
         
     }
