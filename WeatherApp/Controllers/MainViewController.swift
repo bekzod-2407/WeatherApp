@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MainViewController: UIViewController {
     
     var weatherManager = WeatherManager()
     
@@ -45,7 +45,7 @@ class ViewController: UIViewController {
     }
     
 }
-extension ViewController: UITextFieldDelegate {
+extension MainViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.endEditing(true)
