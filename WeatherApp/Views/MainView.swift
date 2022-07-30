@@ -80,7 +80,7 @@ class MainView: UIView {
     lazy var temperatureLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.text = "21.2°"
+        view.text = "99.9°"
         view.font = .systemFont(ofSize: 85.0, weight: .bold)
         view.textColor = .label
         return view
@@ -98,7 +98,7 @@ class MainView: UIView {
     lazy var cityLabel: UILabel = {
         let view = UILabel()
         view.translatesAutoresizingMaskIntoConstraints = false
-        view.text = "London"
+        view.text = "Tashkent"
         view.font = .systemFont(ofSize: 35.0, weight: .light)
         view.textColor = .label
         return view
